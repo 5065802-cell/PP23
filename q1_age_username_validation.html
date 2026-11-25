@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head><title>Age & Username Validation</title></head>
+<body>
+  <h2>User Validation</h2>
+  <form onsubmit="check(event)">
+    Username (min 5 chars): <input type="text" id="u"><br><br>
+    Age (18-60): <input type="number" id="a"><br><br>
+    <button type="submit">Validate</button>
+  </form>
+  <p id="res"></p>
+
+  <script>
+    function check(e) {
+      e.preventDefault();
+      var u = document.getElementById("u").value.trim();
+      var a = parseInt(document.getElementById("a").value, 10);
+      var res = document.getElementById("res");
+      if (u.length < 5) {
+        res.style.color = "red"; res.textContent = "Username must be at least 5 characters.";
+      } else if (isNaN(a) || a < 18 || a > 60) {
+        res.style.color = "red"; res.textContent = "Age must be between 18 and 60.";
+      } else {
+        res.style.color = "green"; res.textContent = "Validation Passed!";
+      }
+    }
+  </script>
+</body>
+</html>
